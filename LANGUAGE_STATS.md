@@ -1,139 +1,139 @@
-# Language Statistics & Architecture
+# 言語統計とアーキテクチャ
 
-Repository: **0pointshaka/cloud-storage-service**  
-Repository ID: **1353019409**
+リポジトリ: **0pointshaka/cloud-storage-service**  
+リポジトリ ID: **1353019409**
 
-## 📊 Language Composition
+## 📊 言語構成
 
-This is a **full-stack application** built with two primary languages:
+これは 2 つの主要言語で構築された**フルスタックアプリケーション**です：
 
-### Backend: Go (🟦 Go)
-- **Purpose**: RESTful API server, database management, file operations
-- **Percentage**: ~45-50% of total codebase
-- **Key Files**:
-  - `backend/main.go` - Application entry point
-  - `backend/config/` - Database and environment setup
-  - `backend/models/` - Data models (User, File, SharedFile)
-  - `backend/handlers/` - HTTP request handlers
-  - `backend/routes/` - API route definitions
-  - `backend/middleware/` - Authentication middleware
+### バックエンド: Go (🟦 Go)
+- **用途**: RESTful API サーバー、データベース管理、ファイル操作
+- **割合**: 総コードベースの ~45-50%
+- **主要ファイル**:
+  - `backend/main.go` - アプリケーションエントリーポイント
+  - `backend/config/` - データベースと環境設定
+  - `backend/models/` - データモデル (User, File, SharedFile)
+  - `backend/handlers/` - HTTP リクエストハンドラー
+  - `backend/routes/` - API ルート定義
+  - `backend/middleware/` - 認証ミドルウェア
 
-### Frontend: JavaScript/React (🟨 JavaScript)
-- **Purpose**: User interface, client-side logic, API communication
-- **Percentage**: ~45-50% of total codebase
-- **Key Files**:
-  - `frontend/src/App.jsx` - Main React component
-  - `frontend/src/pages/` - Page components
-  - `frontend/src/styles/` - CSS styling
-  - `frontend/vite.config.js` - Vite bundler configuration
+### フロントエンド: JavaScript/React (🟨 JavaScript)
+- **用途**: ユーザーインターフェース、クライアント側ロジック、API 通信
+- **割合**: 総コードベースの ~45-50%
+- **主要ファイル**:
+  - `frontend/src/App.jsx` - メイン React コンポーネント
+  - `frontend/src/pages/` - ページコンポーネント
+  - `frontend/src/styles/` - CSS スタイリング
+  - `frontend/vite.config.js` - Vite バンドラー設定
 
-### Configuration & Scripts: Other (~5%)
-- **Batch Scripts** (Windows): `.bat` files for automation
-- **Configuration Files**: `.gitignore`, `go.mod`, `package.json`
-- **Documentation**: `README.md`, `CONTRIBUTING.md`, `LANGUAGE_STATS.md`
+### 設定とスクリプト: その他 (~5%)
+- **バッチスクリプト** (Windows): 自動化用の `.bat` ファイル
+- **設定ファイル**: `.gitignore`、`go.mod`、`package.json`
+- **ドキュメント**: `README.md`、`CONTRIBUTING.md`、`LANGUAGE_STATS.md`
 
-## 🏗 Architecture Overview
+## 🏗 アーキテクチャの概要
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│                  Browser / Client                    │
+│                ブラウザ / クライアント                │
 └──────────────────────┬──────────────────────────────┘
                        │
                        │ HTTP/REST
                        │
 ┌──────────────────────▼──────────────────────────────┐
-│           Frontend (React + Vite)                    │
+│           フロントエンド (React + Vite)              │
 │  ┌────────────────────────────────────────────────┐ │
-│  │  Components                                    │ │
-│  │  - LoginPage                                  │ │
-│  │  - DashboardPage                              │ │
-│  │  - FileUpload                                 │ │
-│  │  - FileList                                   │ │
-│  │  - ShareDialog                                │ │
+│  │  コンポーネント                                  │ │
+│  │  - ログインページ                              │ │
+│  │  - ダッシュボードページ                          │ │
+│  │  - ファイルアップロード                         │ │
+│  │  - ファイルリスト                              │ │
+│  │  - 共有ダイアログ                              │ │
 │  └────────────────────────────────────────────────┘ │
 │  ┌────────────────────────────────────────────────┐ │
-│  │  Services (Axios)                              │ │
-│  │  - API calls to backend                       │ │
-│  │  - Error handling                             │ │
-│  │  - Request/Response interceptors              │ │
-│  └────────────────────────────────────────────────┘ │
-└──────────────────────┬──────────────────────────────┘
-                       │
-                       │ HTTP/REST (port 8080)
-                       │
-┌──────────────────────▼──────────────────────────────┐
-│            Backend (Go + Gin Framework)              │
-│  ┌────────────────────────────────────────────────┐ │
-│  │  Handlers (HTTP Endpoints)                     │ │
-│  │  - /api/auth/* - Authentication               │ │
-│  │  - /api/files/* - File management             │ │
-│  │  - /api/share/* - File sharing                │ │
-│  └────────────────────────────────────────────────┘ │
-│  ┌────────────────────────────────────────────────┐ │
-│  │  Middleware                                    │ │
-│  │  - JWT authentication                         │ │
-│  │  - CORS handling                              │ │
-│  │  - Error logging                              │ │
-│  └────────────────────────────────────────────────┘ │
-│  ┌────────────────────────────────────────────────┐ │
-│  │  Models (GORM)                                 │ │
-│  │  - User                                        │ │
-│  │  - File                                        │ │
-│  │  - SharedFile                                 │ │
+│  │  サービス (Axios)                               │ │
+│  │  - バックエンドへの API 呼び出し                │ │
+│  │  - エラーハンドリング                           │ │
+│  │  - リクエスト/レスポンスインターセプター        │ │
 │  └────────────────────────────────────────────────┘ │
 └──────────────────────┬──────────────────────────────┘
                        │
-                       │ SQL queries
+                       │ HTTP/REST (ポート 8080)
                        │
 ┌──────────────────────▼──────────────────────────────┐
-│              Database (SQLite)                       │
+│         バックエンド (Go + Gin フレームワーク)        │
 │  ┌────────────────────────────────────────────────┐ │
-│  │  Tables                                        │ │
+│  │  ハンドラー (HTTP エンドポイント)                 │ │
+│  │  - /api/auth/* - 認証                          │ │
+│  │  - /api/files/* - ファイル管理                  │ │
+│  │  - /api/share/* - ファイル共有                  │ │
+│  └────────────────────────────────────────────────┘ │
+│  ┌────────────────────────────────────────────────┐ │
+│  │  ミドルウェア                                    │ │
+│  │  - JWT 認証                                    │ │
+│  │  - CORS 処理                                   │ │
+│  │  - エラーログ                                   │ │
+│  └────────────────────────────────────────────────┘ │
+│  ┌────────────────────────────────────────────────┐ │
+│  │  モデル (GORM)                                  │ │
+│  │  - ユーザー                                    │ │
+│  │  - ファイル                                    │ │
+│  │  - 共有ファイル                                │ │
+│  └────────────────────────────────────────────────┘ │
+└──────────────────────┬──────────────────────────────┘
+                       │
+                       │ SQL クエリ
+                       │
+┌──────────────────────▼────────────────────────���─────┐
+│              データベース (SQLite)                    │
+│  ┌────────────────────────────────────────────────┐ │
+│  │  テーブル                                       │ │
 │  │  - users (id, username, email, password)      │ │
 │  │  - files (id, user_id, name, path, size)      │ │
 │  │  - shared_files (id, file_id, shared_with_id) │ │
 │  └────────────────────────────────────────────────┘ │
 └─────────────────────────────────────────────────────┘
                        │
-                       │ File I/O
+                       │ ファイル I/O
                        │
 ┌──────────────────────▼──────────────────────────────┐
-│            File Storage (uploads/)                   │
+│            ファイルストレージ (uploads/)              │
 └─────────────────────────────────────────────────────┘
 ```
 
-## 🔧 Technology Stack by Component
+## 🔧 コンポーネント別テクノロジースタック
 
-### Backend (Go)
+### バックエンド (Go)
 
-| Component | Technology | Purpose |
+| コンポーネント | テクノロジー | 用途 |
 |-----------|-----------|---------|
-| **Framework** | Gin | Fast HTTP web framework |
-| **Database** | SQLite + GORM | Data persistence |
-| **Authentication** | JWT + bcrypt | User auth & password security |
-| **File I/O** | io/os | File upload/download handling |
-| **Logging** | Standard log | Error and info logging |
+| **フレームワーク** | Gin | 高速 HTTP ウェブフレームワーク |
+| **データベース** | SQLite + GORM | データ永続化 |
+| **認証** | JWT + bcrypt | ユーザー認証とパスワードセキュリティ |
+| **ファイル I/O** | io/os | ファイルアップロード/ダウンロード処理 |
+| **ログ** | 標準ログ | エラーと情報ログ |
 
-### Frontend (JavaScript/React)
+### フロントエンド (JavaScript/React)
 
-| Component | Technology | Purpose |
+| コンポーネント | テクノロジー | 用途 |
 |-----------|-----------|---------|
-| **UI Framework** | React 18 | User interface |
-| **Build Tool** | Vite | Fast development & production build |
-| **HTTP Client** | Axios | API communication |
-| **Styling** | CSS3 | Component styling |
-| **State** | React Hooks | Component state management |
+| **UI フレームワーク** | React 18 | ユーザーインターフェース |
+| **ビルドツール** | Vite | 高速開発と本番ビルド |
+| **HTTP クライアント** | Axios | API 通信 |
+| **スタイリング** | CSS3 | コンポーネントスタイリング |
+| **ステート** | React Hooks | コンポーネントの状態管理 |
 
-### Development & Deployment
+### 開発とデプロイメント
 
-| Component | Technology | Purpose |
+| コンポーネント | テクノロジー | 用途 |
 |-----------|-----------|---------|
-| **Windows Automation** | Batch Scripts | Build, run, setup automation |
-| **Version Control** | Git/GitHub | Code management |
-| **Package Manager** | npm | Frontend dependencies |
-| **Module System** | Go Modules | Backend dependencies |
+| **Windows 自動化** | バッチスクリプト | ビルド、実行、セットアップ自動化 |
+| **バージョン管理** | Git/GitHub | コード管理 |
+| **パッケージマネージャー** | npm | フロントエンド依存関係 |
+| **モジュールシステム** | Go Modules | バックエンド依存関係 |
 
-## 💾 Database Schema
+## 💾 データベーススキーマ
 
 ```sql
 CREATE TABLE users (
@@ -168,187 +168,187 @@ CREATE TABLE shared_files (
 );
 ```
 
-## 📡 API Flow Example: File Upload
+## 📡 API フロー例: ファイルアップロード
 
 ```
-1. Frontend (React)
-   └─> User selects file
-   └─> FileUpload component prepares FormData
-   └─> Axios sends POST request to /api/files/upload
-   └─> Includes JWT token in Authorization header
+1. フロントエンド (React)
+   └─> ユーザーがファイルを選択
+   └─> FileUploadコンポーネントが FormData を準備
+   └─> Axios が POST リクエストを /api/files/upload に送信
+   └─> Authorization ヘッダーに JWT トークンを含める
 
-2. Backend (Go)
-   └─> Gin receives request
-   └─> AuthMiddleware validates JWT token
-   └─> FileHandler processes upload
-   └─> Validates file
-   └─> Saves to disk (/uploads/)
-   └─> Creates File record in SQLite
+2. バックエンド (Go)
+   └─> Gin がリクエストを受け取る
+   └─> AuthMiddleware が JWT トークンを検証
+   └─> FileHandler がアップロードを処理
+   └─> ファイルを検証
+   └─> ディスク (/uploads/) に保存
+   └─> SQLite にファイルレコードを作成
 
-3. Database (SQLite)
-   └─> File entry created with user_id, name, path, size
-   └─> Returns new file ID
+3. データベース (SQLite)
+   └─> user_id、name、path、size でファイルエントリーを作成
+   └─> 新しいファイル ID を返す
 
-4. Backend Response
-   └─> Returns success with file metadata
-   └─> Includes file ID, size, created_at
+4. バックエンドレスポンス
+   └─> ファイルメタデータ付きで成功を返す
+   └─> ファイル ID、サイズ、created_at を含める
 
-5. Frontend (React)
-   └─> Receives response
-   └─> Updates file list
-   └─> Shows success message
+5. フロントエンド (React)
+   └─> レスポンスを受け取る
+   └─> ファイルリストを更新
+   └─> 成功メッセージを表示
 ```
 
-## 📊 Code Statistics
+## 📊 コード統計
 
-### Backend (Go)
-- **Total Lines**: ~1,500+ (estimated)
-- **Main Packages**:
-  - `main` - Entry point
-  - `config` - Configuration
-  - `models` - Data structures
-  - `handlers` - Business logic
-  - `routes` - Routing
-  - `middleware` - Middleware functions
-- **Dependencies**: Gin, GORM, JWT, bcrypt
+### バックエンド (Go)
+- **総行数**: ~1,500+ (推定)
+- **主要パッケージ**:
+  - `main` - エントリーポイント
+  - `config` - 設定
+  - `models` - データ構造
+  - `handlers` - ビジネスロジック
+  - `routes` - ルーティング
+  - `middleware` - ミドルウェア関数
+- **依存関係**: Gin、GORM、JWT、bcrypt
 
-### Frontend (React)
-- **Total Lines**: ~1,500+ (estimated)
-- **Components**: 5+ main components
-- **Pages**: 2 main pages (Login, Dashboard)
-- **Dependencies**: React, Axios, Vite
+### フロントエンド (React)
+- **総行数**: ~1,500+ (推定)
+- **コンポーネント数**: 5+ メインコンポーネント
+- **ページ数**: 2 メインページ (ログイン、ダッシュボード)
+- **依存関係**: React、Axios、Vite
 
-### Build & Deployment
-- **Batch Scripts**: 4 files (setup, build, run, run-dev)
-- **Configuration Files**: 5+ files
+### ビルドとデプロイメント
+- **バッチスクリプト**: 4 ファイル (setup、build、run、run-dev)
+- **設定ファイル**: 5+ ファイル
 
-## 🚀 Development Workflow by Language
+## 🚀 言語別開発ワークフロー
 
-### Go Development
-1. Edit `.go` files in `backend/` directory
-2. Run `go fmt` to format code
-3. Run tests: `go test ./...`
-4. Run server: `go run main.go`
-5. Changes require restart
+### Go 開発
+1. `backend/` ディレクトリで `.go` ファイルを編集
+2. `go fmt` でコードをフォーマット
+3. テスト実行: `go test ./...`
+4. サーバー実行: `go run main.go`
+5. 変更にはリスタート が必要
 
-### React Development
-1. Edit `.jsx` files in `frontend/src/` directory
-2. Vite automatically reloads on save (hot reload)
-3. Run tests: `npm test`
-4. Build: `npm run build`
-5. Output to `frontend/dist/`
+### React 開発
+1. `frontend/src/` ディレクトリで `.jsx` ファイルを編集
+2. Vite が保存時に自動的にリロード (ホットリロード)
+3. テスト実行: `npm test`
+4. ビルド: `npm run build`
+5. `frontend/dist/` に出力
 
-## 📦 Dependency Management
+## 📦 依存関係管理
 
-### Go Dependencies
+### Go 依存関係
 ```bash
 cd backend
-go mod download      # Download dependencies
-go mod tidy         # Clean up unused dependencies
-go mod graph        # View dependency graph
+go mod download      # 依存関係をダウンロード
+go mod tidy         # 未使用の依存関係をクリーンアップ
+go mod graph        # 依存関係グラフを表示
 ```
 
-### JavaScript Dependencies
+### JavaScript 依存関係
 ```bash
 cd frontend
-npm install         # Install dependencies
-npm update         # Update dependencies
-npm audit          # Check security vulnerabilities
+npm install         # 依存関係をインストール
+npm update         # 依存関係を更新
+npm audit          # セキュリティ脆弱性をチェック
 ```
 
-## 🔒 Security Architecture
+## 🔒 セキュリティアーキテクチャ
 
-1. **Authentication**
-   - JWT tokens issued on login
-   - Token expires after 24 hours
-   - Tokens validated on each protected endpoint
+1. **認証**
+   - ログイン時に JWT トークンを発行
+   - トークンは 24 時間後に有効期限切れ
+   - 保護されたエンドポイントでトークンを検証
 
-2. **Authorization**
-   - Users can only access their own files
-   - Sharing is explicit and verified
-   - Database constraints enforce user associations
+2. **認可**
+   - ユーザーは自分のファイルのみにアクセス可能
+   - 共有は明示的で検証済み
+   - データベース制約がユーザーの関連付けを強制
 
-3. **Password Security**
-   - Passwords hashed with bcrypt
-   - Salt added automatically
-   - Never stored in plain text
+3. **パスワードセキュリティ**
+   - bcrypt でパスワードをハッシュ化
+   - ソルトが自動的に追加される
+   - プレーンテキストで保存されない
 
-4. **Communication**
-   - HTTP endpoints (HTTPS in production)
-   - CORS configured for frontend origins
-   - Request validation on all endpoints
+4. **通信**
+   - HTTP エンドポイント (本番環境では HTTPS)
+   - フロントエンドのオリジン用に CORS を設定
+   - すべてのエンドポイントでリクエスト検証
 
-## 🎯 Code Organization Best Practices
+## 🎯 コード組織のベストプラクティス
 
-### Backend (Go)
-- **Models**: Define database schemas
-- **Handlers**: Implement business logic
-- **Middleware**: Handle cross-cutting concerns
-- **Routes**: Organize endpoints
-- **Config**: Centralize configuration
+### バックエンド (Go)
+- **モデル**: データベーススキーマを定義
+- **ハンドラー**: ビジネスロジックを実装
+- **ミドルウェア**: クロスカッティングの関心を処理
+- **ルート**: エンドポイントを整理
+- **設定**: 設定を一元化
 
-### Frontend (React)
-- **Components**: Reusable UI elements
-- **Pages**: Full-page views
-- **Services**: API communication layer
-- **Styles**: Component-specific CSS
-- **Hooks**: Custom logic hooks
+### フロントエンド (React)
+- **コンポーネント**: 再利用可能な UI 要素
+- **ページ**: フルページビュー
+- **サービス**: API 通信レイヤー
+- **スタイル**: コンポーネント固有の CSS
+- **Hooks**: カスタムロジック Hooks
 
-## 📈 Scalability Considerations
+## 📈 スケーラビリティに関する考慮事項
 
-**Current Limitations:**
-- SQLite not suitable for production with high concurrency
-- Files stored locally (single server)
-- No caching layer
+**現在の制限:**
+- SQLite は高い並行性での本番環境に不適切
+- ファイルはローカルに保存（単一サーバー）
+- キャッシングレイヤーがない
 
-**For Production:**
-- Migrate to PostgreSQL or MySQL
-- Implement S3/Cloud storage
-- Add Redis caching
-- Use load balancer
-- Implement CDN for frontend assets
+**本番環境向け:**
+- PostgreSQL または MySQL に移行
+- S3/クラウドストレージを実装
+- Redis キャッシュを追加
+- ロードバランサーを使用
+- フロントエンドアセット用に CDN を実装
 
-## 🔄 Data Flow
+## 🔄 データフロー
 
-### Authentication Flow
+### 認証フロー
 ```
-User Input → Frontend Form → Axios POST → Backend Handler 
-→ Database Check → Password Verification → JWT Generation 
-→ Response to Frontend → Store Token → Redirect to Dashboard
-```
-
-### File Upload Flow
-```
-File Selection → FormData Preparation → Axios POST with JWT 
-→ Backend Auth Middleware → File Validation → Save to Disk 
-→ Database Record Creation → Response with File Metadata 
-→ Update Frontend State → Show Success Message
+ユーザー入力 → フロントエンドフォーム → Axios POST → バックエンドハンドラー 
+→ データベースチェック → パスワード検証 → JWT 生成 
+→ フロントエンドへレスポンス → トークン保存 → ダッシュボードにリダイレクト
 ```
 
-### File Sharing Flow
+### ファイルアップロードフロー
 ```
-Select File → Enter Username → Axios POST → Backend Verification 
-→ User Lookup → Create SharedFile Record → Response 
-→ Update Frontend → Show Shared File in User's Account
+ファイル選択 → FormData 準備 → Axios POST（JWT付き） 
+→ バックエンド認証ミドルウェア → ファイル検証 → ディスクに保存 
+→ データベースレコード作成 → レスポンス 
+→ フロントエンドステート更新 → 成功メッセージ表示
 ```
 
-## 🧪 Testing Strategy
+### ファイル共有フロー
+```
+ファイル選択 → ユーザー名入力 → Axios POST → バックエンド検証 
+→ ユーザールックアップ → SharedFile レコード作成 → レスポンス 
+→ フロントエンド更新 → ユーザーのアカウントに共有ファイル表示
+```
 
-### Backend Testing
-- **Unit Tests**: Test individual functions and handlers
-- **Integration Tests**: Test database interactions
-- **API Tests**: Test endpoints with various inputs
-- **Coverage Target**: >80% code coverage
+## 🧪 テスト戦略
 
-### Frontend Testing
-- **Component Tests**: Test React components in isolation
-- **Integration Tests**: Test component interactions
-- **E2E Tests**: Test full user workflows
-- **Coverage Target**: >70% code coverage
+### バックエンドテスト
+- **ユニットテスト**: 個別の関数とハンドラーをテスト
+- **統合テスト**: データベース相互作用をテスト
+- **API テスト**: 様々な入力でエンドポイントをテスト
+- **カバレッジ目標**: >80% コードカバレッジ
+
+### フロントエンドテスト
+- **コンポーネントテスト**: React コンポーネントを単独でテスト
+- **統合テスト**: コンポーネント相互作用をテスト
+- **E2E テスト**: ユーザーワークフロー全体をテスト
+- **カバレッジ目標**: >70% コードカバレッジ
 
 ---
 
-**Repository**: [0pointshaka/cloud-storage-service](https://github.com/0pointshaka/cloud-storage-service)  
-**Repository ID**: 1353019409  
-**Created**: 2026-09-01  
-**Last Updated**: 2026-09-01
+**リポジトリ**: [0pointshaka/cloud-storage-service](https://github.com/0pointshaka/cloud-storage-service)  
+**リポジトリ ID**: 1353019409  
+**作成日**: 2026-09-01  
+**最終更新**: 2026-09-01
